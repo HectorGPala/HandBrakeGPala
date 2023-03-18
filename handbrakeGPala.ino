@@ -148,12 +148,14 @@ void readPedal(PEDAL &p){
   switch(p.type){
      case HALL_SENSOR:
       // Read analog voltage
-      double hallVolt = 0.0;
+      double hallVolt;
       hallVolt = p.sampler->read();
       // Convert to mV
-      float halt_mV = hallVolt * 5000.0 / 1023;
+      float halt_mV;
+      halt_mV = hallVolt * 5000.0 / 1023;
       // Convert to magnet flux 49E
-      float hallFlux = halt_mV * 53.33 - 133.3;
+      float hallFlux;
+      hallFlux = halt_mV * 53.33 - 133.3;
       p.value = hallFlux;
       updateMinMax(p);
       break;
